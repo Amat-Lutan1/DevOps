@@ -20,6 +20,9 @@ pipeline {
                 sh 'oc delete secret entra-id-2-tls --ignore-not-found'
                 sh 'oc create secret generic entra-id-2-tls \
                  --from-file=tls.crt=certificates/entra_id_2.crt'
+                sh 'oc delete secret entra-id-3-tls --ignore-not-found'
+                sh 'oc create secret generic entra-id-3-tls \
+                 --from-file=tls.crt=certificates/entra_id_3.crt'
                 
                 sh 'oc delete secret microsoft-ecc-root-ca-tls --ignore-not-found'
                 sh 'oc create secret generic microsoft-ecc-root-ca-tls \
