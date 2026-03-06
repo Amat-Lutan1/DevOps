@@ -55,18 +55,10 @@ pipeline {
         stage('Finalization') {
             steps {
                 echo 'Finalization'
-
-                sh 'oc set volume deployment/ibm-odm-prod-odm-decisionserverconsole \
-                 --add --name=custom-volume \
-                 --type=persistentVolumeClaim \
-                 --claim-name=custom-pvc \
-                 --mount-path=/custom_config'
-
-                sh 'oc set volume deployment/ibm-odm-prod-odm-decisionserverruntime \
-                 --add --name=custom-volume \
-                 --type=persistentVolumeClaim \
-                 --claim-name=custom-pvc \
-                 --mount-path=/custom_config'                
+                // update deployments
+                sh 'oc patch deployment/ibm-odm-prod-odm-decisionserverconsole \
+                 --patch "$(cat patches/deployment/ibm-odm-prod-odm-decisionserverconsole.yaml)" \
+                 --type=strategic'              
             }
         }
     }
