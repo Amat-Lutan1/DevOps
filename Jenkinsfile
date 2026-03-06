@@ -43,7 +43,7 @@ pipeline {
         stage('Deploy ODM to OCP') {
             steps {
                 echo 'Deploy ODM to OCP'
-                
+                // install ODM using helm chart
                 sh 'helm uninstall ibm-odm-prod --ignore-not-found'
                 sh 'helm install ibm-odm-prod ibm-helm/ibm-odm-prod \
                  --version 24.1.20 \
@@ -54,6 +54,20 @@ pipeline {
         stage('Finalization') {
             steps {
                 echo 'Finalization'
+
+                sh 'oc set volume deployment/ibm-odm-prod-odm-decisionserverconsole \
+                 --add \ 
+                 --name=custom-volume \
+                 --type=persistentVolumeClaim \
+                 --claim-name=custom-pvc \
+                 --mount-path=/custom_config'
+
+                sh 'oc set volume deployment/ibm-odm-prod-odm-decisionserverruntime \
+                 --add \ 
+                 --name=custom-volume \
+                 --type=persistentVolumeClaim \
+                 --claim-name=custom-pvc \
+                 --mount-path=/custom_config'                
             }
         }
     }
