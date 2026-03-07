@@ -113,7 +113,7 @@ decisionCenter:
   persistenceLocale: en_US
   podDisruptionBudget: null
   refererList: null
-  replicaCount: 1
+  replicaCount: 0
   resources:
     limits:
       cpu: 2
@@ -181,7 +181,7 @@ decisionRunner:
     ingress: null
   nodeAffinity: null
   podDisruptionBudget: null
-  replicaCount: 1
+  replicaCount: 0
   resURL: null
   resources:
     limits:
@@ -313,7 +313,7 @@ decisionServerRuntime:
     ingress: null
   nodeAffinity: null
   podDisruptionBudget: null
-  replicaCount: 1
+  replicaCount: 0
   resources:
     limits:
       cpu: 2
