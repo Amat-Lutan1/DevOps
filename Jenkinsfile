@@ -55,10 +55,10 @@ pipeline {
         stage('Finalization') {
             steps {
                 echo 'Finalization'
-                // update deployments
+                // update deployments to add custom config mounts
                 sh 'oc patch deployment/ibm-odm-prod-odm-decisionserverconsole \
-                 --patch-file=patches/deployment/ibm-odm-prod-odm-decisionserverconsole.yaml' \
-                 --type=strategic'''
+                 --patch-file=patches/deployment/ibm-odm-prod-odm-decisionserverconsole.yaml \
+                 --type=strategic'
                 
                 //sh 'oc set volume deployment/ibm-odm-prod-odm-decisionserverconsole \
                 // --add --name=custom-volume \
