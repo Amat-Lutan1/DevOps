@@ -1,6 +1,6 @@
 customization:
   annotations: {}
-  authSecretRef: entra-id-web-auth-secret
+  authSecretRef: web-auth-secret
   baiEmitterSecretRef: null
   cloudpakID: null
   cloudpakName: IBM Cloud Pak for Business Automation
@@ -419,7 +419,7 @@ networkPolicy:
   ingress: null
 oidc:
   adminRef: null
-  allowedDomains: [ login.microsoftonline.com ]
+  allowedDomains: null
   applyToComponents: []
   clientRef: null
   disableLoginPanel: null
