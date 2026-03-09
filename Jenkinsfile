@@ -35,8 +35,8 @@ pipeline {
                  pod/$(oc get pod -l run=custom-config-app -o jsonpath="{.items[0].metadata.name}") --timeout=300s'
 
                 // get custom config app pod name
-                sh '''CUSTOM_CONFIG_APP_POD_NAME=\
-                 $(oc get pods -o jsonpath='{.items[0].metadata.name}' --selector=run=custom-config-app)'''
+                sh 'CUSTOM_CONFIG_APP_POD_NAME=\
+                 $(oc get pods -o jsonpath="{.items[0].metadata.name}" --selector=run=custom-config-app)'
  
                 // copy custom configuration files for Decision Server Console to custom_config folder
                 sh 'oc cp ./custom_config/application_dsc_custom.xml \
