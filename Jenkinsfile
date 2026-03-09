@@ -31,7 +31,7 @@ pipeline {
                 // create custom config app for mounting the custom config pvc
                 sh 'oc delete deployment custom-config-app'
                 sh 'oc apply -f deployment/custom-config-app.yaml'
-                sh 'oc wait --for=condition=Ready \
+                sh 'oc wait --for=condition=Ready=false \
                  pod/$(oc get pod -l run=custom-config-app -o jsonpath="{.items[0].metadata.name}") --timeout=300s'
  
                 // copy custom configuration files for Decision Server Console to custom_config folder
