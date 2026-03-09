@@ -47,17 +47,25 @@ pipeline {
                 echo 'Finalization'
                 // update decision server console deployment to add custom config mount
                 sh 'oc scale deployment/ibm-odm-prod-odm-decisionserverconsole --replicas=0'
+                sh 'oc wait --for=jsonpath='{.status.replicas}'=0 deployment/ibm-odm-prod-odm-decisionserverconsole'
+
                 sh 'oc patch deployment/ibm-odm-prod-odm-decisionserverconsole \
                  --patch-file=patches/deployment/ibm-odm-prod-odm-decisionserverconsole.yaml \
                  --type=strategic'
+                
                 sh 'oc scale deployment/ibm-odm-prod-odm-decisionserverconsole --replicas=1'
+                sh 'oc wait --for=jsonpath='{.status.replicas}'=1 deployment/ibm-odm-prod-odm-decisionserverconsole'
 
                 // update decision server runtime deployment to add custom config mount
                 sh 'oc scale deployment/ibm-odm-prod-odm-decisionserverruntime --replicas=0'
+                sh 'oc wait --for=jsonpath='{.status.replicas}'=0 deployment/ibm-odm-prod-odm-decisionserverruntime'
+                
                 sh 'oc patch deployment/ibm-odm-prod-odm-decisionserverruntime \
                  --patch-file=patches/deployment/ibm-odm-prod-odm-decisionserverruntime.yaml \
                  --type=strategic'
-                sh 'oc scale deployment/ibm-odm-prod-odm-decisionserverruntime --replicas=1'                
+                
+                sh 'oc scale deployment/ibm-odm-prod-odm-decisionserverruntime --replicas=1'
+                sh 'oc wait --for=jsonpath='{.status.replicas}'=1 deployment/ibm-odm-prod-odm-decisionserverruntime'
             }
         }
     }
