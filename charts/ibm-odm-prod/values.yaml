@@ -419,7 +419,7 @@ networkPolicy:
   ingress: null
 oidc:
   adminRef: null
-  allowedDomains: null
+  allowedDomains: [ login.microsoftonline.com ]
   applyToComponents: []
   clientRef: null
   disableLoginPanel: null
