@@ -36,7 +36,8 @@ pipeline {
 
                 // copy custom configuration files for DSC and DSR to custom_config folder
                 sh '''oc cp ./custom_config/application_dsc_custom.xml \
-                 $(oc get pods -o jsonpath='{.items[0].metadata.name}' --selector=run=custom-config-app):/custom_config'''
+                 $(oc get pods -o jsonpath='{.items[0].metadata.name}' --selector=run=custom-config-app):/custom_config \
+                 -c websphere-liberty'''
                 //sh 'oc cp ./custom_config/application_dsr_custom.xml \
                 // $(oc get pods -o jsonpath='{.items[0].metadata.name}' --selector=run=custom-config-app):/custom_config'''
                 //sh 'oc cp ./custom_config/web_dsc_custom.xml \
