@@ -47,7 +47,7 @@ customization:
     probes: null
     resources: null
   tolerations: null
-  trustedCertificateList: [ digicert-secret,digicertrsa-secret,ms-secret ]
+  trustedCertificateList: [ digicert-secret,ms-secret ]
   usageMeteringSecretRef: null
   vault: ''
   watcher:
