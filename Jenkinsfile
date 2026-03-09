@@ -35,6 +35,7 @@ pipeline {
 
                 // copy custom configuration files for DSC and DSR to custom_config folder
                 sh '''CUSTOM_CONFIG_POD_NAME=$(oc get pods -o jsonpath='{.items[0].metadata.name}' --selector=run=custom-config-app)'''
+                echo CUSTOM_CONFIG_POD_NAME: $CUSTOM_CONFIG_POD_NAME
                 sh 'oc cp custom_config/application_dsc_custom.xml $CUSTOM_CONFIG_POD_NAME:/custom_config/application_dsc_custom.xml'
                 sh 'oc cp custom_config/application_dsr_custom.xml $CUSTOM_CONFIG_POD_NAME:/custom_config/application_dsr_custom.xml'
                 sh 'oc cp custom_config/web_dsc_custom.xml $CUSTOM_CONFIG_POD_NAME:/custom_config/web_dsc_custom.xml'
