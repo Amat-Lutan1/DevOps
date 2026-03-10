@@ -66,10 +66,10 @@ pipeline {
             steps {
                 echo 'Deploy ODM to OCP'
                 // install ODM using helm chart
-                sh 'helm uninstall ibm-odm-prod --ignore-not-found'
-                sh 'helm install ibm-odm-prod ibm-helm/ibm-odm-prod \
+                sh 'helm uninstall ibm-odm-prod-ds --ignore-not-found'
+                sh 'helm install ibm-odm-prod-ds ibm-helm/ibm-odm-prod \
                  --version 24.1.20 \
-                 -f charts/ibm-odm-prod/values.yaml \
+                 -f charts/ibm-odm-prod/ds/values.yaml \
                  --wait \
                  --timeout 30m'
             }
