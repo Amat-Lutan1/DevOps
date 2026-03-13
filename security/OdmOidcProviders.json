@@ -1,7 +1,7 @@
 {
     "providers": [
       {
-          "name": "entra_id",
+          "name": "azure_ad",
           "grantType": "password",
           "authorizationURL": "https://login.microsoftonline.com/8561e204-d946-4a1f-9b5c-59975d5951b4/oauth2/v2.0/authorize",
           "tokenURL": "https://login.microsoftonline.com/8561e204-d946-4a1f-9b5c-59975d5951b4/oauth2/v2.0/token",
