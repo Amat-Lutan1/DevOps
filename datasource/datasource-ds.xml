@@ -3,23 +3,15 @@
   <!-- decision server datasource -->
   <dataSource id="resdatasource"
      jndiName="jdbc/resdatasource" jdbcDriverRef="postgresql-driver" validationTimeout="0" type="javax.sql.ConnectionPoolDataSource">
-        <!--
-        <properties
-          databaseName='${cloud.services.mydb.connection.name}'
-          user='${cloud.services.mydb.connection.user}'
-          password='${cloud.services.mydb.connection.password}'
-          portNumber='${cloud.services.mydb.connection.port}'
-          serverName='${cloud.services.mydb.connection.host}'/>
-        -->
         <connectionManager
-                        maxPoolSize="25"
-                        minPoolSize="10"
+                        maxPoolSize="50"
+                        minPoolSize="0"
                         connectionTimout="10s"
                         agedTimeout="30m" />
         <properties
           databaseName="postgres"
           user="postgres"
-          password="postgres"
+          password="DS_DB_PASSWORD_SECRET"
           portNumber="5432"
           tcpKeepAlive="true"
           sslMode="prefer"
